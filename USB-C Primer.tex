@@ -13,6 +13,7 @@
 \usepackage{caption}
 \usepackage{hyperref}
 
+
 \begin{document}
 
 \begin{titlepage} 
@@ -57,7 +58,7 @@ Also, it's reversible! The USB-C connector has a total of 12 pins: two GND, two 
 USB-C allows for extraordinary data and power transfer better than anything in previous generations. USB4 can support 40Gbps (theoretically 80Gbps with USB4 Gen 4) and power delivery up to 100W (Standard Power Range, 20V @ 5A) or 240W (Extended Power Range, 48V @ 5A).  \\\\
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.6\linewidth]{intel.jpg}
+	\includegraphics[width=0.6\linewidth]{images/intel.jpg}
 	\caption{Rumors say that Intel made this ad themselves.}
 	\captionsetup{justification=raggedright,singlelinecheck=false}
 	\label{fig:usbSuperposition}
@@ -76,16 +77,16 @@ Here's how a USB2 micro-B receptacle would be wired up (assuming it's a device):
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.43\linewidth]{USB-micro-B.png}
+	\includegraphics[width=0.43\linewidth]{images/USB-micro-B.png}
 	\caption{USB2 micro-B female port wiring.}
 	\label{fig:usb2_microB}
 \end{figure}
 
-A logical(but bogus) wiring to implement the same USB 2 signal through USB-C:
+A \textbf{incorrect} wiring to implement the same USB 2 signal through USB-C:
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.43\linewidth]{USB-faulty-type-C.png}
+	\includegraphics[width=0.43\linewidth]{images/USB-faulty-type-C.png}
 	\caption{Faulty USB2 Type-C wiring.}
 	\label{fig:usb2_faulty_usbc}
 \end{figure} 
@@ -93,7 +94,7 @@ A logical(but bogus) wiring to implement the same USB 2 signal through USB-C:
 \noindent 
 This breaks out the D- and D+ pins, the VBUS pin, and GND. This should work!\\\\
 \noindent
-No, it doesn't. This would make your board perfectly OK with legacy non e-marked cables, but would not work with a "smart" e-marked cable. The reason for this is because USB-C requires you to negotiate for power. For legacy applications, your power source doesn't have this ability, so it just defaults to 5V @ 500mA(USB2.0) or 900mA(USB3.0). \\\\
+Unfortunately, it doesn't. This would make your board perfectly OK with legacy non e-marked cables, but would not work with a "smart" e-marked cable. The reason for this is because USB-C requires you to negotiate for power. For legacy applications, your power source doesn't have this ability, so it just defaults to 5V @ 500mA(USB2.0) or 900mA(USB3.0). \\\\
 \noindent
 With Power Delivery, you can essentially request a certain voltage and current from a PD-compatible source. One example is the \href{https://www.apple.com/shop/product/MHJA3AM/A/20w-usb-c-power-adapter}{\$19 Apple 20W Power Brick} which supports PD, capable of 5V@3A or 9V@2.22A. 
 
@@ -104,7 +105,7 @@ Fear not. There's a cheap way to negotiate for additional current flow for USB T
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.55\linewidth]{USB-C-Pulldown.png}
+	\includegraphics[width=0.55\linewidth]{images/USB-C-Pulldown.png}
 	\caption{USB2 Type-C with 5V}
 	\label{fig:usb2_5V_usbc}
 \end{figure}
@@ -117,7 +118,7 @@ There are a variety of connectors you can pick for USB-C: Power-Only, USB2, and 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=1\linewidth]{3-USB-C.png}
+	\includegraphics[width=1\linewidth]{images/3-USB-C.png}
 	\caption{USB Type-C Selections}
 	\label{fig:usbc-3-ports}
 \end{figure}
@@ -127,7 +128,7 @@ Additionally, for reference, the pinout of a USB-C connector.\footnote{Figure 2,
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=1\linewidth]{microchip-pinout.png}
+	\includegraphics[width=1\linewidth]{images/microchip-pinout.png}
 	\caption{USB-C Receptacle Pinout}
 	\label{fig:usb-c-pinout-microchip}
 \end{figure}
@@ -138,7 +139,7 @@ Additionally, for reference, the pinout of a USB-C connector.\footnote{Figure 2,
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=.8\linewidth]{CUI-Devices-Power-Only.png}
+	\includegraphics[width=.8\linewidth]{images/CUI-Devices-Power-Only.png}
 	\caption{USB-C Power Only Pinout\protect\footnotemark}
 	\label{fig:usb-c-pinout-power-only-CUI}
 \end{figure}
@@ -155,7 +156,7 @@ These connectors are very simple, having six pins each: VBUS, GND and CC on each
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=.8\linewidth]{GCT-USB2-Type-C.png}
+	\includegraphics[width=.8\linewidth]{images/GCT-USB2-Type-C.png}
 	\caption{USB2 Type-C\protect\footnotemark}
 	\label{fig:usb-c-pinout-usb2-gct}
 \end{figure}
@@ -175,7 +176,7 @@ It's quite simple to use for USB2 applications. You must connect VBUS and GND on
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=.8\linewidth]{Amphenol-USB3.2-Type-C.png}
+	\includegraphics[width=.8\linewidth]{images/Amphenol-USB3.2-Type-C.png}
 	\caption{USB3.2 Type-C\protect\footnotemark}
 	\label{fig:usb-c-pinout-usb3.2-amphenol}
 \end{figure}
@@ -216,16 +217,55 @@ It's important to note that PD applications should be considered carefully. Powe
 \newpage
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\linewidth]{CYPD3177_sch.png}
+	\includegraphics[width=\linewidth]{images/CYPD3177_sch.png}
 	\caption{CYPD3177 Schematic Capture\protect\footnotemark}
 	\label{fig:cypd3177_sch}
 \end{figure}
 
 \footnotetext{\href{https://github.com/Hugoyhu/CYPD3177-Breakout/blob/main/CYPD3177\%20Breakout\%20Schematic.png}{Image Source}}
 
+\newpage
+
+\section{Downstream USB-C Ports}
+
+We can now do a lot with a USB-C input, but what about converting a downstream facing USB-A port to USB-C? For example, if we had a USB hub with USB2.0 Type-A outputs, and wanted to make them USB2.0 Type-C. It's not necessarily as easy as simply adding the port, but close enough. We just need two CC resistors, one on each pin. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\linewidth]{images/microchip-dfp-table.png}
+	\caption{DFP Resistor Chart\protect\footnotemark}
+	\label{fig:microchip_dfp}
+\end{figure}
+
+\footnotetext{Microchip AN1953 DFP Resistor Chart}
+
+\noindent
+To convert a traditionally USB2.0 design, it's most likely that the design only supports 500mA (Default Power), so in most cases, two 56K$\Omega$  ± 20\% pull-up resistors should be sufficient. If your design receives external power, then it's a good idea to consider increasing maximum current to 1.5A or 3.0A with the resistor pull-up values specified. \\
+
+
+\noindent
+For example, this USB2 hub design takes existing USB-A outputs and converts them to USB-C out. Keep in mind, changing the connector doesn't actually give you any increase in speed- a USB2 design will continue to operate at USB2 speeds even with USB-C. 
+
+\newpage
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\linewidth]{images/USBAtoUSBC.png}
+	\caption{USB Type-A vs USB Type-C 500mA Power}
+	\label{fig:usbconversion}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\linewidth]{images/SL2.1A.png}
+	\caption{SL2.1A based USB2 Type-C hub\protect\footnotemark}
+	\label{fig:sl21a}
+\end{figure}
+\footnotetext{Can be found here: https://github.com/Hugoyhu/SL2.1A-Type-C-Hub}
+
+\newpage
 \section{Conclusion}
 \noindent
-This document is hardly a comprehensive source for USB-C. This is more-so an introduction to new features offered by the USB-C standard. The information here is mostly accurate (for most applications) for a USB2 application, but lacks much critical information for a USB3+ based design. It's also important to note that not all information here is complete, and may at times be a simplification.
+This document is hardly a comprehensive source for USB-C. This is more-so an introduction to new features offered by the USB-C standard. The information here is mostly accurate (for most applications) for a USB2 application, but lacks much critical information for a USB3+ based design. It's also important to note that not all information here is complete, and may at times be a simplification. 
 For more information about the USB-C spec and implementation, you should take a look at the further reading below. 
 
 \newpage
